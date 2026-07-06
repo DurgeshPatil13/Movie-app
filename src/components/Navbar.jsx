@@ -4,7 +4,7 @@ import Input from './Input'
 import Heart from './Heart'
 const Navbar = () => {
   return (
-    <div className='h-15 w-full  flex justify-between'>
+    <div className='h-15 w-full bg-gray-100  flex justify-between'>
 <Logo/>
 <Input/> 
 <Heart/>
