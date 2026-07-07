@@ -1,16 +1,24 @@
-import React from 'react'
+import React from "react";
 import { FaRegHeart } from "react-icons/fa";
 
 const Heart = () => {
-   
   return (
-    <div className='h-[90%] md:mt-1 bg-[#e4e3e3] rounded-[50%] w-15  md:mr-3 flex justify-center items-center'>
-<button >
-    <FaRegHeart className='text-3xl text-gray-800' />
-</button>
+    <button
+      className="
+        w-11
+        h-11
+        rounded-full
+        bg-gray-200
+        flex
+        items-center
+        justify-center
+        hover:bg-gray-300
+        transition
+      "
+    >
+      <FaRegHeart className="text-xl md:text-2xl text-gray-800" />
+    </button>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Heart
+export default Heart;
