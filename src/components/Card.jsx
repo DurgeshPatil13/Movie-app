@@ -1,5 +1,6 @@
 import React from "react";
 import { FaStar, FaRegHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Card = ({ movie }) => {
     const genreColors = {
@@ -15,14 +16,17 @@ const Card = ({ movie }) => {
   Comedy: "bg-yellow-100 text-yellow-700",
   Horror: "bg-pink-100 text-pink-700",
 };
-  return (
+
+
+return (
+   <Link to={`/movie/${movie.id}`}>
     <div className="sm:w-64 w-52 rounded-2xl bg-white shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col">
       {/* Poster */}
       <div className="relative">
         <img
           src={movie.poster}
           alt={movie.title}
-          className="w-full h-72 object-cover"
+          className="w-full h-60 object-cover"
         />
 
         {/* Rating */}
@@ -60,6 +64,7 @@ const Card = ({ movie }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
