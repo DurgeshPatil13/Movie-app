@@ -9,6 +9,8 @@ import {
 } from "react-icons/fa";
 import { MdMovie } from "react-icons/md";
 import { FiCopy } from "react-icons/fi";
+
+
 const Moviedetails = () => {
     const { id } = useParams();
 const movieId = Number(id);
@@ -18,11 +20,6 @@ const movieId = Number(id);
 return (
  <div className="min-h-screen bg-[#0b1120] flex justify-center items-center p-5">
       <div className="relative w-full max-w-7xl rounded-3xl border border-slate-700/60 bg-linear-to-br from-[#111827] via-[#0f172a] to-[#111827] p-8 shadow-2xl">
-
-        {/* Copy Icon */}
-        <button className="absolute top-6 right-6 text-gray-400 hover:text-white transition">
-          <FiCopy size={28} />
-        </button>
 
         <div className="grid lg:grid-cols-[400px_1fr] gap-10">
 
