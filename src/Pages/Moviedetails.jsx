@@ -90,7 +90,7 @@ return (
             <hr className="my-10 border-slate-700" />
 
             {/* Overview */}
-            <h2 className="text-4xl font-semibold text-white">
+            <h2 className="text-4xl font-semibold text-[#e6e2e2]">
               Overview
             </h2>
 
