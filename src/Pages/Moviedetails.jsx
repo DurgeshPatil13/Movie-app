@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from "react-router-dom";
-import movies from '../data/movie'
+import { getMovieDetails } from "../services/movieService";
 import {
   FaStar,
   FaCalendarAlt,
@@ -9,14 +9,27 @@ import {
 } from "react-icons/fa";
 import { MdMovie } from "react-icons/md";
 import { FiCopy } from "react-icons/fi";
-
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Moviedetails = () => {
+  const [movies, setMovie] = useState(null);
     const { id } = useParams();
 const movieId = Number(id);
-      const movie=movies.find((elem)=>(
-        elem.id===movieId
-    ))
+useEffect(() => {
+
+  const fetchMovie = async () => {
+const data = await getMovieDetails(id);
+setMovie(data);
+  };
+
+  fetchMovie();
+
+}, [movieId]);
+  if (!movies) {
+    return <h1>Loading...</h1>;
+  }
+
 return (
  <div className="min-h-screen bg-[#0b1120] flex justify-center items-center p-5">
       <div className="relative w-full max-w-7xl rounded-3xl border border-slate-700/60 bg-linear-to-br from-[#111827] via-[#0f172a] to-[#111827] p-8 shadow-2xl">
@@ -28,8 +41,8 @@ return (
 
   <div className="h-190 overflow-hidden rounded-3xl">
     <img
-      src={movie.poster}
-      alt={movie.title}
+  src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
+      alt={movies.title}
       className="w-full h-full object-cover"
     />
   </div>
@@ -43,7 +56,7 @@ return (
 
             {/* Title */}
             <h1 className="text-6xl font-bold text-white">
-              {movie.title}
+              {movies.title}
             </h1>
 
             {/* Rating */}
@@ -51,27 +64,27 @@ return (
               <div className="flex items-center gap-2">
                 <FaStar className="text-yellow-400 text-3xl" />
                 <span className="text-3xl font-semibold text-white">
-                  {movie.rating}
+              {movies.vote_average}
                 </span>
               </div>
 
               <div className="w-px h-8 bg-slate-600" />
 
               <span className="text-3xl text-gray-400">
-                {movie.year}
+                {movies.year}
               </span>
             </div>
 
             {/* Genres */}
             <div className="flex flex-wrap gap-4 mt-8">
-              {movie.genres.map((genre) => (
-                <span
-                  key={genre}
-                  className="px-6 py-3 rounded-xl bg-blue-900/40 text-blue-400 font-semibold text-lg"
-                >
-                  {genre}
-                </span>
-              ))}
+          {movies.genres.map((genre) => (
+  <span
+    key={genre.id}
+    className="px-6 py-3 rounded-xl bg-blue-900/40 text-blue-400 font-semibold text-lg"
+  >
+    {genre.name}
+  </span>
+))}
             </div>
 
             <hr className="my-10 border-slate-700" />
@@ -82,7 +95,7 @@ return (
             </h2>
 
             <p className="mt-6 text-gray-400 text-xl leading-10 max-w-4xl">
-              {movie.overview}
+              {movies.overview}
             </p>
 
             <hr className="my-10 border-slate-700" />
@@ -98,7 +111,7 @@ return (
                 </div>
 
                 <span className="text-white">
-             2005
+      {movies.release_date}
                 </span>
               </div>
 
@@ -109,7 +122,7 @@ return (
                 </div>
 
                 <span className="text-white">
-                  {movie.runtime}
+               {movies.runtime} min
                 </span>
               </div>
 
