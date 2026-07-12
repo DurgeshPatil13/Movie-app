@@ -1,8 +1,11 @@
 import React from "react";
 import { FaRegHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Heart = () => {
   return (
+    <Link to={`/favourites`}>
+      
     <button
       className="
         w-11
@@ -18,6 +21,7 @@ const Heart = () => {
     >
       <FaRegHeart className="text-xl md:text-2xl text-gray-800" />
     </button>
+    </Link>
   );
 };
 

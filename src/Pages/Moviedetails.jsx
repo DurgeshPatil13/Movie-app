@@ -14,20 +14,35 @@ import { useEffect } from 'react';
 
 const Moviedetails = () => {
   const [movies, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
     const { id } = useParams();
 const movieId = Number(id);
 useEffect(() => {
 
   const fetchMovie = async () => {
+    setLoading(true);
 const data = await getMovieDetails(id);
 setMovie(data);
+    setLoading(false);
   };
 
   fetchMovie();
 
 }, [movieId]);
-  if (!movies) {
-    return <h1>Loading...</h1>;
+  if (loading) {
+    return <div className="flex items-center justify-center h-screen">
+  <div
+    className="w-14 h-14 rounded-full animate-spin"
+    style={{
+      background:
+        "conic-gradient(from 0deg, #e2e8f0 0deg, #e2e8f0 220deg, #2c7a93 320deg, #2c7a93 360deg)",
+      WebkitMask:
+        "radial-gradient(farthest-side, transparent calc(100% - 6px), black 0)",
+      mask:
+        "radial-gradient(farthest-side, transparent calc(100% - 6px), black 0)",
+    }}
+  />
+</div>
   }
 
 return (
@@ -64,7 +79,7 @@ return (
               <div className="flex items-center gap-2">
                 <FaStar className="text-yellow-400 text-3xl" />
                 <span className="text-3xl font-semibold text-white">
-              {movies.vote_average}
+              {movies.vote_average.toFixed(1)}
                 </span>
               </div>
 

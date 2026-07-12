@@ -10,7 +10,9 @@ import Home from './Pages/Home.jsx'
 const router=createBrowserRouter([
   {
     path:"/",
-    element:<Home/>
+    element:<Home
+
+    />
   },
   {
        path:"/favourites",
