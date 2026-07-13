@@ -6,13 +6,11 @@ import "./index.css";
 import Favourites from './Pages/Favourites.jsx'
 import Moviedetails from './Pages/Moviedetails.jsx'
 import Home from './Pages/Home.jsx'
-
+import { FavouritesProvider } from "./context/FavouritesContext";
 const router=createBrowserRouter([
   {
     path:"/",
-    element:<Home
-
-    />
+    element:<Home/>
   },
   {
        path:"/favourites",
@@ -25,7 +23,10 @@ const router=createBrowserRouter([
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}/>
+    <FavouritesProvider>
+   <RouterProvider router={router}/>
+</FavouritesProvider>
+
   
   </StrictMode>,
 )

@@ -6,7 +6,12 @@ import Heart from "./Heart";
 const Navbar = ({search, setSearch, handleSearch}) => {
 
   return (
-    <nav className="w-full  mb-5 sticky top-0 z-100 bg-gray-100 px-4 py-3">
+    <nav className="sticky top-0 z-50 mb-5 w-full
+bg-white/70
+backdrop-blur-xl
+border-b border-white/30
+shadow-[0_8px_32px_rgba(0,0,0,0.08)]
+px-4 py-3">
       <div className="flex flex-wrap items-center gap-3">
 
         <Logo />
