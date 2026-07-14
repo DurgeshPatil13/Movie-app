@@ -1,6 +1,10 @@
 import React from 'react'
 import { useParams } from "react-router-dom";
 import { getMovieDetails } from "../services/movieService";
+import { RotatingLines } from "react-loader-spinner";
+import { GoArrowLeft } from "react-icons/go";
+import { BsArrowLeft } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import {
   FaStar,
   FaCalendarAlt,
@@ -30,24 +34,33 @@ setMovie(data);
 
 }, [movieId]);
   if (loading) {
-    return <div className="flex items-center justify-center h-screen">
-  <div
-    className="w-14 h-14 rounded-full animate-spin"
-    style={{
-      background:
-        "conic-gradient(from 0deg, #e2e8f0 0deg, #e2e8f0 220deg, #2c7a93 320deg, #2c7a93 360deg)",
-      WebkitMask:
-        "radial-gradient(farthest-side, transparent calc(100% - 6px), black 0)",
-      mask:
-        "radial-gradient(farthest-side, transparent calc(100% - 6px), black 0)",
-    }}
-  />
+    return <div className="flex items-center justify-center bg-[#0C0F17] h-screen">
+
+<RotatingLines
+visible={true}
+height="80"
+width="80"
+color="grey"
+strokeWidth="5"
+animationDuration="0.75"
+ariaLabel="rotating-lines-loading"
+wrapperStyle={{}}
+wrapperClass=""
+/>
 </div>
   }
 
 return (
- <div className="min-h-screen bg-[#0b1120] flex justify-center items-center p-5">
-      <div className="relative w-full max-w-7xl rounded-3xl border border-slate-700/60 bg-linear-to-br from-[#111827] via-[#0f172a] to-[#111827] p-8 shadow-2xl">
+  
+ <div className="min-h-screen font-['jost'] relative bg-[#14161c] flex justify-center items-center p-5">
+    <Link to={`/`}>
+  <div>
+  
+<BsArrowLeft className='text-white absolute m-4 top-0 left-0 text-4xl' />
+
+  </div>
+  </Link>
+      <div className="relative w-full max-w-7xl ">
 
         <div className="grid lg:grid-cols-[400px_1fr] gap-10">
 
@@ -76,8 +89,8 @@ return (
 
             {/* Rating */}
             <div className="flex items-center gap-6 mt-6">
-              <div className="flex items-center gap-2">
-                <FaStar className="text-yellow-400 text-3xl" />
+              <div className="flex items-center border bg-[#121721] border-[#9A7A38] rounded-3xl p-1 px-3 gap-2">
+                <FaStar className="text-yellow-400 text-xl" />
                 <span className="text-3xl font-semibold text-white">
               {movies.vote_average.toFixed(1)}
                 </span>
@@ -95,7 +108,7 @@ return (
           {movies.genres.map((genre) => (
   <span
     key={genre.id}
-    className="px-6 py-3 rounded-xl bg-blue-900/40 text-blue-400 font-semibold text-lg"
+    className="px-6 py-3 rounded-2xl bg-[#121721] text-[#C1524B] border border-[#e88f8989] font-semibold text-lg"
   >
     {genre.name}
   </span>
@@ -105,7 +118,7 @@ return (
             <hr className="my-10 border-slate-700" />
 
             {/* Overview */}
-            <h2 className="text-4xl font-semibold text-[#e6e2e2]">
+            <h2 className="text-4xl font-semibold text-yellow-400">
               Overview
             </h2>
 
@@ -121,7 +134,7 @@ return (
 
               <div className="flex justify-between">
                 <div className="flex items-center gap-4 text-gray-400">
-                  <FaCalendarAlt className="text-purple-400" />
+                  <FaCalendarAlt className="text-[#E8B34C]" />
                   Release Date
                 </div>
 
@@ -132,7 +145,7 @@ return (
 
               <div className="flex justify-between">
                 <div className="flex items-center gap-4 text-gray-400">
-                  <FaClock className="text-blue-400" />
+                  <FaClock className="text-[#E8B34C]" />
                   Runtime
                 </div>
 
@@ -141,16 +154,7 @@ return (
                 </span>
               </div>
 
-              <div className="flex justify-between">
-                <div className="flex items-center gap-4 text-gray-400">
-                  <MdMovie className="text-cyan-400" />
-                  Director
-                </div>
-
-                <span className="text-white">
-                 Christopher Nolan
-                </span>
-              </div>
+         
 
           
 
@@ -161,6 +165,7 @@ return (
         </div>
       </div>
     </div>
+   
 );
 }
 

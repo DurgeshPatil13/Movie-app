@@ -7,5 +7,5 @@ baseURL: "https://api.themoviedb.org/3",
     Authorization: `Bearer ${import.meta.env.VITE_TMDB_TOKEN}`
   },
 });
-console.log(import.meta.env.VITE_TMDB_TOKEN);
+
 export default api;
