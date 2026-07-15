@@ -71,7 +71,7 @@ wrapperClass=""
     setSearch={setSearch}
     handleSearch={handleSearch}
 />
-  <div className="text-white m-4 font-['Jost'] ml-5 flex text-3xl">
+  <div className="text-gray-400 m-4 font-['Jost'] ml-5 flex text-3xl">
         TRENDING NOW <BsArrowRight className='mt-1.5 ml-2' />
       </div>
 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-stretch justify-items-center">
