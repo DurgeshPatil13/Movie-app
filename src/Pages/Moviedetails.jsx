@@ -38,8 +38,8 @@ setMovie(data);
 
 <RotatingLines
 visible={true}
-height="80"
-width="80"
+height="60"
+width="60"
 color="grey"
 strokeWidth="5"
 animationDuration="0.75"
@@ -67,7 +67,7 @@ return (
           {/* Poster */}
       <div className="grid lg:grid-cols-[420px_1fr] gap-12">
 
-  <div className="h-190 overflow-hidden rounded-3xl">
+  <div className="h-180 overflow-hidden rounded-3xl">
     <img
   src={`https://image.tmdb.org/t/p/w500${movies.poster_path}`}
       alt={movies.title}

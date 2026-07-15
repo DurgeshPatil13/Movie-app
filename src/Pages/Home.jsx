@@ -78,10 +78,7 @@ wrapperClass=""
   {state.map((movie) => (
     <Card key={movie.id} movie={movie} genres={genres}/>
   ))}
-<div className=" m-4 flex items-center gap-2 whitespace-nowrap text-3xl font-['Jost'] text-white">
-  <span>TOP RATED</span>
-  <BsArrowRight />
-</div>
+
 </div>
      </div>
     </>
